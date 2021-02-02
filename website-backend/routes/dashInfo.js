@@ -6,6 +6,7 @@ router.use(ensureCorrectUser);
 router.get('/',   (req, res, next)=>{
 
   console.log("Got the request")
+  console.log("Test for the github")
   res.status(200).json({
     message:"Got request successfully"
   })
