@@ -1,12 +1,12 @@
-import  {currentUser } from './currentUser';
-import {errors} from './errors';
+import  currentUser  from './currentUser';
+import errors from './errors';
 import {combineReducers} from 'redux';
 
-export default function rootReducer(){
-return combineReducers({
+const rootReducer = combineReducers({
   currentUser,
   errors
 })
-}
 
+
+export default rootReducer;
 
