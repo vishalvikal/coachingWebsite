@@ -18,7 +18,7 @@ body{
       rows:auto auto auto;
       columns:auto;
     }
-    
+  row-gap: 2vh;
   }
 }
 
@@ -121,7 +121,7 @@ body{
    background: linear-gradient(-45deg, rgb(255, 248, 248), rgb(255, 255, 255));
   height:80vh;
   width:95vw;
-  margin-top:8vh;
+  margin-top:5vh;
   border-radius:20px;
   
   .main-dash__strip{
@@ -158,7 +158,7 @@ body{
 
     width:75vw;
     height:85vh;
-    margin-top:10vh;
+    margin-top:8vh;
     border-radius:25px;
   }
 
@@ -173,7 +173,7 @@ body{
     z-index: -2;
     width:100%;
     height:100%;
-    top:30%;
+    top:10%;
     left:0;
     opacity:0.8;
     filter:blur(1px);
@@ -181,6 +181,65 @@ body{
   }
 }
 
+
+.footer-section{
+  p{
+    margin:0;
+  }
+  &__main{
+     
+      font-family: 'Quicksand', sans-serif;
+      font-size:1rem;
+      color:white;
+       background:radial-gradient(circle at 5% 5%,  #6c91ff, transparent),
+              radial-gradient(circle at 50% 5%, #5d84fa, transparent ),
+              radial-gradient(circle at 95% 5%, #4169E1, transparent),
+              radial-gradient(circle at 95% 95%, #4169E1, transparent),
+              radial-gradient(circle at 50% 95%, #4169E1,#3567ff),
+              radial-gradient(circle at 5% 95%, #4169E1 , #0e43e4),
+              radial-gradient(circle at 50% 50% , rgb(42, 42, 255) ,rgb(85, 85, 255));
+      box-shadow: 0px -2px 5px rgba(165, 165, 165, 0.767),
+                inset 0px 0.5px 5px rgba(82, 99, 255, 0.685);
+      display:grid;
+      grid-template-columns: auto auto auto;
+      
+
+    @media (min-width:40rem){
+        font-size:1.2rem;
+        align-items:center;
+       
+     }
+    div{
+      padding:20px;
+      text-align: center;
+    }
+  
+  }
+
+  &__links{
+    display:flex;
+   flex-direction: column;
+   justify-content: space-between;
+   a{
+        margin:2vh 0;
+      }
+   font-size:1.5rem;
+   a{
+     margin:1px 0;
+     cursor:pointer;
+   }
+  }
+  @media (min-width:40rem){
+    &__links{
+      font-size:30px;
+      flex-direction: row;
+      a{
+        margin:0 2vw;
+      }
+    }
+   
+  }
+}
 
 @keyframes opacityOnly{
   0%{
