@@ -15,6 +15,7 @@ export function setAuthorizationToken(token){
 }
 
 export function logout(){
+
   return dispatch=>{
     localStorage.clear();
     setAuthorizationToken(false);
@@ -25,7 +26,7 @@ export function logout(){
 export function authuser(type, userData){
   return dispatch=>{
     return new Promise((resolve, reject)=>{
-      return apiCall('post', `/api/user/auth${type}`, userData)
+      return apiCall('post', `/api/user/auth/${type}`, userData)
                 .then(({token, ...user})=>{
                   localStorage.setItem('jwtToken', token);
                   dispatch(setCurrentUser(user));
@@ -33,8 +34,8 @@ export function authuser(type, userData){
                   resolve();
                 })
                 .catch(err=>{
+                  
                   dispatch(addError(err.message));
-                  reject();
                 })
     })
   }

@@ -1,7 +1,7 @@
 import React from 'react';
-
+import { authuser } from '../store/actions/auth'
 const Footer = ()=>{
-
+authuser('singin', {});
   return(<section class="footer-section">
     <footer class="footer-section__main">
       <div class="footer-section__description"><p>

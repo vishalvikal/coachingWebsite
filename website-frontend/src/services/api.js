@@ -16,12 +16,12 @@ export function setTokenheader(token){
  * @param {string} path the route path/ endpoint of the api
  * @param {object} data (optional) data in JSOn form for POST request
  */
-export function apiCall(method, path, data){
-                  return new Promise((resolve, reject)=>{
-                    await axios[method.toLowerCase()](path, data).then(res=>{
+export  function apiCall(method, path, data){
+                  return new Promise( async function(resolve, reject){
+                     await axios[method](path,data).then(res=>{
                       return resolve(res.data);
                     }).catch(err=>{
-                      return reject(err.response.data.error);
+                      return reject(err.response.data);
                     })
                   })
 
