@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../index.css';
+import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 class AuthForm extends Component{
   constructor(props){
@@ -14,15 +15,19 @@ class AuthForm extends Component{
     e.preventDefault();
     console.log(e);
     console.log(this.state);
-    this.props.signin('signin', {...this.state})
+    this.props.signin('signin', {...this.state}).then(()=>{
+      this.props.history.push("/")
+    }).catch(()=>{
+      return;
+    })
     this.setState({rollNo:'', password:''})
     e.target.reset();
   }
-  componentDidMount(){
-    // this.props.signin('signin', {})
-    console.log(this.props);
+  // componentDidMount(){
+  //   // this.props.signin('signin', {})
+  //   console.log(this.props);
     
-  }
+  // }
   render(){
    const {message} = this.props;
    const {rollNo, password} = this.state;
@@ -54,4 +59,4 @@ class AuthForm extends Component{
 }
 
 
-export default AuthForm
+export default withRouter(AuthForm)

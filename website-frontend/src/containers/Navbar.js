@@ -5,10 +5,15 @@ import {logout} from '../store/actions/auth'
 class Navbar extends Component{
   constructor(props){
     super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout(e){
+    this.props.logout();
   }
   render(){
-    console.log(this.props);
-    const {user} = this.props;
+    // console.log(this.props);
+    // const {user} = this.props;
     return(<section className="main-header">
   
         <div className="main-header__heading">
@@ -16,7 +21,16 @@ class Navbar extends Component{
         </div>
         <div className="main-header__links">
           <Link className="main-header__link" to="/"> Home</Link>
-        {user.isAuthenticated ? <Link onClick={this.props.logout} className="main-header__link" to="/auth">LogOut</Link> : <Link className="main-header__link" to="/auth">LogIn</Link>}
+        {this.props.user.isAuthenticated ? <button 
+        style={{
+          'background':'none',
+          'border':'none',
+          'outline':'none',
+          'padding':'none',
+          'margin':'none'
+
+        }}
+        onClick={this.handleLogout} className="main-header__link" >LogOut</button> : <Link className="main-header__link" to="/auth">LogIn</Link>}
        
         </div>
   

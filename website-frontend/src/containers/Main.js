@@ -4,25 +4,22 @@ import {connect} from 'react-redux';
 import Homepage from '../components/Homepage'
 import AuthForm from './AuthForm'
 import {authuser} from '../store/actions/auth'
-class Main extends Component{
-  constructor(props){
-    super(props);
-  }
-  render(){
+const Main = props =>{
+    const {authuser, errors} = props
     // console.log(this.props.authuser('sigin', {}));
     return(
       <Switch >
-        <Route exact path="/" render={(props)=><Homepage></Homepage>}></Route>
+        <Route exact path="/" render={(props)=><Homepage {...props}></Homepage>}></Route>
         <Route exact path="/auth" render={(props)=><AuthForm {...props}
-        signin = {this.props.authuser}
-        message={this.props.errors.message}
+        signin = {authuser}
+        message={errors.message}
         ></AuthForm>}></Route>
       </Switch>
 
      
     )
   }
-}
+
 
 
 function mapStateToProps(state) {

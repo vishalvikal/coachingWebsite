@@ -4,7 +4,7 @@ import {configureStore} from '../store/'
 import {BrowserRouter as Router} from 'react-router-dom';
 import Main from './Main';
 import Navbar from "./Navbar"
-import backgroundImage from '../images/patternImageWebsite.jpg'
+//import backgroundImage from '../images/patternImageWebsite.jpg'
 import Footer from'./Footer'
 const store = configureStore();
 class App extends Component {
