@@ -8,12 +8,15 @@ class Main extends Component{
   constructor(props){
     super(props);
   }
-
   render(){
+    // console.log(this.props.authuser('sigin', {}));
     return(
       <Switch >
         <Route exact path="/" render={(props)=><Homepage></Homepage>}></Route>
-        <Route exact path="/auth" render={(props)=><AuthForm {...props}></AuthForm>}></Route>
+        <Route exact path="/auth" render={(props)=><AuthForm {...props}
+        signin = {this.props.authuser}
+        message={this.props.errors.message}
+        ></AuthForm>}></Route>
       </Switch>
 
      

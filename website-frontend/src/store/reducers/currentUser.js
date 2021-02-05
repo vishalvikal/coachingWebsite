@@ -10,7 +10,7 @@ export default (state=defaultState, action) =>{
   switch(action.type){
     case SET_CURRENT_USER:
       return{
-        isAuthenticated: !!Object.keys(state.user).length,
+        isAuthenticated: !!Object.keys(action.user).length,
         user:action.user
       };
       default:
