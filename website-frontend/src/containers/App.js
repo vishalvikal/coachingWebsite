@@ -18,9 +18,9 @@ class App extends Component {
           <div className="background_color"></div>
           <Navbar></Navbar>
           <Main></Main>
-          <div className="background_image">
+          {/* <div className="background_image">
             <img src={backgroundImage}></img>
-          </div>
+          </div> */}
         <Footer></Footer>
         </Router>
         </Provider>

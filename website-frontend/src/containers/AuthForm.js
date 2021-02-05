@@ -12,9 +12,9 @@ class AuthForm extends Component{
         </div>
         <form className="main-form">
           <label htmlFor="rollNo"> RollNo:</label>
-          <input id="rollNo" type="text"></input>
-          <label htmlFor="password"> password:</label>
-          <input id="password" type="password"></input>
+          <input id="rollNo" type="text" placeholder="rollno"></input>
+          <label htmlFor="password"> Password:</label>
+          <input id="password" type="password" placeholder="password"></input>
           <button type="submit">LogIn</button>
         </form>
       </div>
