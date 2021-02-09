@@ -6,52 +6,93 @@ class AuthForm extends Component{
   constructor(props){
     super(props)
     this.state={
-      rollNo:'',
-      password:''
+      user:{email:'',
+      password:'', 
+      username:''},
+      confirmPassword:'',
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(e){
+    console.log(this.state);
     e.preventDefault();
     console.log(e);
-    console.log(this.state);
-    this.props.signin('signin', {...this.state}).then(()=>{
+
+    this.props.authUser(this.props.signin?"signin":"signup", {...this.state.user}).then(()=>{
       this.props.history.push("/")
     }).catch(()=>{
       return;
     })
-    this.setState({rollNo:'', password:''})
+    this.setState({user:{username:'', email:'', password:''}})
     e.target.reset();
   }
-  // componentDidMount(){
-  //   // this.props.signin('signin', {})
-  //   console.log(this.props);
-    
-  // }
   render(){
-   const {message} = this.props;
-   const {rollNo, password} = this.state;
-    
+   const {message, heading, buttonValue, signup} = this.props;
+   
+   const {email, password, username} = this.state.user;
+   console.log(this.state);
     return(<section className="authform-section">
       <div className="auth-form">
         <div className="auth-form__strip">
-          Login
+          {heading}
         </div>
         <form className="main-form"  onSubmit={this.handleSubmit}>
-          <label htmlFor="rollNo"> RollNo:</label>
-          <input name="rollNo" id="rollNo" style={
-            message &&! rollNo ? {
+          {signup&&(<div>
+            <label htmlFor="username">Username:</label>
+            <input
+              style={
+                message && !username ? {
+                  'border': "0.4px solid red"
+                } : null
+              }
+
+              id="username" placeholder="username" name="username" onChange={(e) => this.setState((prevState)=>{
+                let user ={
+                  ...prevState.user,
+                  [e.target.name]:e.target.value
+                  
+                }
+                 return {user}
+              })}></input>
+          </div>)}
+          
+          <label htmlFor="email"> Email:</label>
+          <input name="email" id="email" style={
+            message &&! email ? {
               'border': "0.4px solid red"
             } : null
-          } type="text" placeholder="rollno" onChange={e=>this.setState({[e.target.name]:e.target.value})}></input>
+          } type="email" placeholder="email" onChange={(e) => this.setState((prevState) => {
+            let user = {
+              ...prevState.user,
+              [e.target.name]: e.target.value
+
+            }
+            return { user }
+          })}></input>
           <label htmlFor="password"> Password:</label>
           <input name="password" id="password"
             style={
               message && !password ? {
                 'border': "0.4px solid red"
               } : null
-            } type="password" placeholder="password" onChange={e => this.setState({ [e.target.name]: e.target.value })}></input>
-          <button type="submit">LogIn</button>
+            } type="password" placeholder="password" onChange={(e) => this.setState((prevState) => {
+              let user = {
+                ...prevState.user,
+                [e.target.name]: e.target.value
+
+              }
+              return { user }
+            })}></input>
+          {signup && (<div>
+            <label htmlFor="confirmPassword">Confirm Password:</label>
+            <input name="confirmPassword" id="password"
+              style={
+                message && !password ? {
+                  'border': "0.4px solid red"
+                } : null
+              } type="text" placeholder="retype Password" onChange={e => this.setState({ [e.target.name]: e.target.value })}></input>
+          </div>)}
+          <button type="submit">{buttonValue}</button>
         </form>
       </div>
     </section>)

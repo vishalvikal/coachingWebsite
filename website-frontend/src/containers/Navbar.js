@@ -30,7 +30,12 @@ class Navbar extends Component{
           'margin':'none'
 
         }}
-        onClick={this.handleLogout} className="main-header__link" >LogOut</button> : <Link className="main-header__link" to="/auth">LogIn</Link>}
+        onClick={this.handleLogout} className="main-header__link" >LogOut</button> : 
+          <div>      <Link className="main-header__link" to="/login">LogIn</Link>
+                     <Link className="main-header__link" to="/signup">Signup</Link>
+           </div>
+  
+        }
        
         </div>
   

@@ -4,26 +4,26 @@ const jwt = require('jsonwebtoken')
 exports.signin = async function (req, res, next){
 
   try{
-    let user = await db.User.findOne({rollNo:req.body.rollNo});
+    let user = await db.User.findOne({email:req.body.email});
     console.log(user);
-    let {rollNo, id} = user;
+    let {email, id} = user;
     let isMatch = await user.comparePassword(req.body.password);
   
 
     if(isMatch){
       let token = jwt.sign({
         id, 
-        rollNo
+        email
       }, "This is very good jwt hashing")
       res.status(200).json({
         id,
-        rollNo,
+        email,
         token
       })
     }else{
       return next({
         status:400,
-        message:"Invalid RollNo/Password"
+        message:"Invalid email/Password"
       })
     }
   
@@ -31,7 +31,7 @@ exports.signin = async function (req, res, next){
   }catch(err){
     return next({
       status:400,
-      message:"Invalid RollNo/Password"
+      message:"Invalid email/Password"
     })
   }
 
@@ -40,22 +40,23 @@ exports.signin = async function (req, res, next){
 exports.signup = async function(req, res, next){
   try {
     let user = await db.User.create(req.body);
-    let { rollNo, id } = user;
-    let token = await jwt.sign({ rollNo, id }, "This is very good jwt hashing")
+    let { email, id } = user;
+    let token = await jwt.sign({ email, id }, "This is very good jwt hashing")
     console.log("Here i got the request");
     res.status(200).json({
       id,
-      rollNo,
+      email,
       token
     })
   } catch (err) {
     if (err.code === 11000) {
       const err = {
         status: 400,
-        message: "This rollno is already taken"
+        message: "This email/username is already taken"
       }
       return next(err)
     }
+    console.log(err);
     return next(err);
   }
 }

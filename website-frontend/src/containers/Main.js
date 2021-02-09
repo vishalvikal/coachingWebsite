@@ -10,10 +10,23 @@ const Main = props =>{
     return(
       <Switch >
         <Route exact path="/" render={(props)=><Homepage {...props}></Homepage>}></Route>
-        <Route exact path="/auth" render={(props)=><AuthForm {...props}
-        signin = {authuser}
+        <Route exact path="/login" render={(props)=><AuthForm {...props}
+        heading="Login"
+        buttonValue="LogIn"
+        authUser = {authuser}
+        signin='signin'
+       
         message={errors.message}
         ></AuthForm>}></Route>
+        <Route exact path="/signup"
+         render={(props)=><AuthForm 
+         {...props}
+         heading="Signup"
+         buttonValue="SignUp"
+         authUser={authuser}
+         signup='signup'
+         message={errors.message}
+         ></AuthForm>}></Route>
       </Switch>
 
      

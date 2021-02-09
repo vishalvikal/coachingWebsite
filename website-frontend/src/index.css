@@ -174,7 +174,7 @@ body {
   .authform-section .auth-form {
     display: grid;
     grid-template-rows: 100px 200px;
-    row-gap: 10px;
+    row-gap: 50px;
     box-shadow: 5px 5px 8px 0 rgba(0, 0, 0, 0.25), -4px -4px 8px 0 rgba(255, 255, 255, 0.3);
     border-radius: 50px;
     background: white;
@@ -182,7 +182,7 @@ body {
     max-height: 500px;
     min-width: 300px;
     min-height: 350px;
-    height: 45vh;
+    height: 50vh;
     width: 70vw;
     animation: slideIn 500ms 0ms cubic-bezier(0, 1.5, 0.5, 1); }
     .authform-section .auth-form .main-form {
@@ -192,6 +192,23 @@ body {
       justify-items: center;
       grid-template-rows: auto;
       padding: 0 5px; }
+      .authform-section .auth-form .main-form div:nth-of-type(1) {
+        grid-row: 1/1;
+        grid-column: 1/ span 2;
+        display: grid;
+        grid-template-columns: auto 274px;
+        align-self: center;
+        column-gap: 80px; }
+        .authform-section .auth-form .main-form div:nth-of-type(1) input {
+          justify-self: start; }
+      .authform-section .auth-form .main-form div:nth-of-type(2) {
+        grid-row: 4/5;
+        grid-column: 1/ span 2;
+        display: grid;
+        grid-template-columns: auto 274px;
+        column-gap: 25px; }
+        .authform-section .auth-form .main-form div:nth-of-type(2) input {
+          justify-self: start; }
       .authform-section .auth-form .main-form input {
         vertical-align: middle;
         background: #fafafa;
@@ -202,7 +219,8 @@ body {
         border-radius: 50px;
         border: 0.2px solid rgba(96, 96, 245, 0.712);
         outline: none;
-        align-self: center; }
+        align-self: center;
+        justify-self: start; }
         .authform-section .auth-form .main-form input:focus {
           background: rgba(255, 255, 255, 0) !important;
           border: 0.8px solid rgba(80, 80, 247, 0.911) !important;
@@ -210,6 +228,7 @@ body {
       .authform-section .auth-form .main-form label {
         padding: 0.2px 0;
         align-self: center;
+        justify-self: start;
         font-size: 1rem; }
       .authform-section .auth-form .main-form button {
         font-size: 0.9rem;
