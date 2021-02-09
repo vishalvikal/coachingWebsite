@@ -14,10 +14,8 @@ class AuthForm extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(e){
-    console.log(this.state);
+    console.log(this.props.user);
     e.preventDefault();
-    console.log(e);
-
     this.props.authUser(this.props.signin?"signin":"signup", {...this.state.user}).then(()=>{
       this.props.history.push("/")
     }).catch(()=>{
@@ -30,8 +28,9 @@ class AuthForm extends Component{
    const {message, heading, buttonValue, signup} = this.props;
    
    const {email, password, username} = this.state.user;
-   console.log(this.state);
+   const {confirmPassword} = this.state;
     return(<section className="authform-section">
+      {message && (<div className="message-section">{message}</div>)}
       <div className="auth-form">
         <div className="auth-form__strip">
           {heading}
@@ -92,7 +91,7 @@ class AuthForm extends Component{
                 } : null
               } type="text" placeholder="retype Password" onChange={e => this.setState({ [e.target.name]: e.target.value })}></input>
           </div>)}
-          <button type="submit">{buttonValue}</button>
+          <button disabled={password && confirmPassword && password === confirmPassword?false:true } type="submit">{buttonValue}</button>
         </form>
       </div>
     </section>)

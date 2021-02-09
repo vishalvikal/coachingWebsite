@@ -272,6 +272,18 @@ body{
   font-family: 'Quicksand', sans-serif;
   display:flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .message-section{
+    margin: 0 0 25px 0;
+    background-color: white;
+    padding:20px;
+    border-radius: 50px;
+    box-shadow: 
+    8px 8px 10px 0 rgba(0, 0, 0, 0.25),
+    -4px -4px 8px 0 rgba(255, 255, 255, 0.3);
+    color:rgb(255, 48, 48);
+  }
   margin-top:5vh;
   .auth-form{
     display:grid;

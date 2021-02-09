@@ -6,14 +6,13 @@ import Main from './Main';
 import Navbar from "./Navbar"
 import jwtDecode from 'jwt-decode';
 import {setAuthorizationToken, setCurrentUser} from '../store/actions/auth';
-//import backgroundImage from '../images/patternImageWebsite.jpg'
 import Footer from'./Footer'
 const store = configureStore();
-jwtDecode(localStorage.jwtToken)
 if(localStorage.jwtToken){
   setAuthorizationToken(localStorage.jwtToken);
   try{
     store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)))
+    //setting up the jwtToken if it is in the localstore
   }
   catch{
     store.dispatch(setCurrentUser({}));
