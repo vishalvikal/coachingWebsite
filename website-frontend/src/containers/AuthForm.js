@@ -91,7 +91,7 @@ class AuthForm extends Component{
                 } : null
               } type="text" placeholder="retype Password" onChange={e => this.setState({ [e.target.name]: e.target.value })}></input>
           </div>)}
-          <button disabled={password && confirmPassword && password === confirmPassword?false:true } type="submit">{buttonValue}</button>
+          <button disabled={password && confirmPassword && password === confirmPassword?false:signup && true } type="submit">{buttonValue}</button>
         </form>
       </div>
     </section>)
